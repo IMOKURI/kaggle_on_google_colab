@@ -7,7 +7,7 @@ from googleapiclient.http import MediaIoBaseDownload
 
 
 class Setup:
-    def __init__(self, compete):
+    def __init__(self):
         auth.authenticate_user()
 
         drive_service = build("drive", "v3")
@@ -30,6 +30,7 @@ class Setup:
             print("Download %d%%." % int(status.progress() * 100))
         os.chmod(filename, 600)
 
+    def dirs(self, compete):
         dirs = [
             f"/content/{compete}/input/{compete}",
             f"/content/{compete}/output",
