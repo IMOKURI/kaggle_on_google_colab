@@ -1,5 +1,7 @@
 import io
 import os
+import subprocess
+import sys
 
 from google.colab import auth
 from googleapiclient.discovery import build
@@ -38,3 +40,17 @@ class Setup:
         ]
         for dir_ in dirs:
             os.makedirs(dir_, exist_ok=True)
+
+
+def exec_get_lines(cmd):
+    proc = subprocess.Popen(
+        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+    )
+
+    while True:
+        line = proc.stdout.readline()
+        if line:
+            yield line
+
+        if not line and proc.poll() is not None:
+            break
