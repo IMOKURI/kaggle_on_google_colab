@@ -34,6 +34,7 @@ class Setup:
 
     def dirs(self, compete):
         dirs = [
+            f"/content/zip",
             f"/content/{compete}/input/{compete}",
             f"/content/{compete}/output",
             f"/content/{compete}/working",
